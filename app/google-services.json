@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "785631289830",
+    "project_id": "myapp-85b80",
+    "storage_bucket": "myapp-85b80.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:785631289830:android:856eb2e8a1d24dd7cdf627",
+        "android_client_info": {
+          "package_name": "com.example.firbaseapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlAVAt0nYnE2IH1XYrIpbdO58A7BPT9sA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:785631289830:android:806d612b09223687cdf627",
+        "android_client_info": {
+          "package_name": "com.example.fitmate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlAVAt0nYnE2IH1XYrIpbdO58A7BPT9sA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
