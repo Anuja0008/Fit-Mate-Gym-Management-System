@@ -1,21 +1,22 @@
 {
   "project_info": {
-    "project_number": "785631289830",
-    "project_id": "myapp-85b80",
-    "storage_bucket": "myapp-85b80.firebasestorage.app"
+    "project_number": "17367004317",
+    "firebase_url": "https://fitmateandroid-default-rtdb.firebaseio.com",
+    "project_id": "fitmateandroid",
+    "storage_bucket": "fitmateandroid.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:785631289830:android:856eb2e8a1d24dd7cdf627",
+        "mobilesdk_app_id": "1:17367004317:android:62371a51c50e2d964b1074",
         "android_client_info": {
-          "package_name": "com.example.firbaseapp"
+          "package_name": "com.company.fitmate"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBlAVAt0nYnE2IH1XYrIpbdO58A7BPT9sA"
+          "current_key": "AIzaSyANbjCuayOAatNaDJkV4nX5k4NOchyKxxU"
         }
       ],
       "services": {
@@ -26,7 +27,7 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:785631289830:android:806d612b09223687cdf627",
+        "mobilesdk_app_id": "1:17367004317:android:fdb4325f93403ad94b1074",
         "android_client_info": {
           "package_name": "com.example.fitmate"
         }
@@ -34,7 +35,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBlAVAt0nYnE2IH1XYrIpbdO58A7BPT9sA"
+          "current_key": "AIzaSyANbjCuayOAatNaDJkV4nX5k4NOchyKxxU"
         }
       ],
       "services": {

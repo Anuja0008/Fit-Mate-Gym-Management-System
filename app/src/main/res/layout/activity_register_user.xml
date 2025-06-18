@@ -1,162 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:padding="24dp"
+    android:background="#F5F5F5">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/card_background"
-        android:padding="24dp">
-
-
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
         <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="72dp"
-            android:gravity="center"
-            android:text="Register Personal Information"
-            android:textColor="#000000"
-            android:textSize="20sp"
+            android:text="BMI and Health Details"
+            android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="#212121"
+            android:layout_marginBottom="24dp" />
 
-        <RadioGroup
-            android:id="@+id/genderGroup"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle">
+        <!-- User ID input -->
+        <EditText
+            android:id="@+id/edtUserId"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="User ID"
+            android:inputType="text"
+            android:padding="12dp"
+            android:background="@drawable/bg_edittext"
+            android:layout_marginBottom="16dp" />
 
-            <RadioButton
-                android:id="@+id/radioMale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Male" />
-
-            <RadioButton
-                android:id="@+id/radioFemale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:text="Female" />
-        </RadioGroup>
-
+        <!-- Age input -->
         <EditText
             android:id="@+id/edtAge"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/edittext_background_rounded"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:hint="Age"
             android:inputType="number"
             android:padding="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/genderGroup" />
+            android:background="@drawable/bg_edittext"
+            android:layout_marginBottom="16dp" />
 
+        <!-- Height input -->
         <EditText
             android:id="@+id/edtHeight"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/edittext_background"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:hint="Height (cm)"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:padding="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edtAge" />
+            android:background="@drawable/bg_edittext"
+            android:layout_marginBottom="16dp" />
 
+        <!-- Weight input -->
         <EditText
             android:id="@+id/edtWeight"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/edittext_background"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:hint="Weight (kg)"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:padding="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edtHeight" />
+            android:background="@drawable/bg_edittext"
+            android:layout_marginBottom="24dp" />
 
         <TextView
-            android:id="@+id/tvHealth"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
-            android:text="Select any health conditions:"
+            android:text="Select Health Conditions"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edtWeight" />
-
-        <CheckBox
-            android:id="@+id/cbHeart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="32dp"
-            android:text="Heart Disease"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvHealth" />
-
-        <CheckBox
-            android:id="@+id/cbCancer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cancer"
-            app:layout_constraintTop_toTopOf="@id/cbHeart"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-
-        <CheckBox
-            android:id="@+id/cbCholesterol"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:text="Cholesterol"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cbHeart" />
+            android:textColor="#424242"
+            android:layout_marginBottom="12dp" />
 
         <CheckBox
             android:id="@+id/cbDiabetes"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Diabetes"
-            app:layout_constraintTop_toTopOf="@id/cbCholesterol"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginBottom="8dp" />
 
+        <CheckBox
+            android:id="@+id/cbHeart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Heart Disease"
+            android:layout_marginBottom="8dp" />
+
+        <CheckBox
+            android:id="@+id/cbCholesterol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cholesterol"
+            android:layout_marginBottom="8dp" />
+
+        <CheckBox
+            android:id="@+id/cbCancer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cancer"
+            android:layout_marginBottom="24dp" />
+
+        <!-- BMI Result -->
+        <TextView
+            android:id="@+id/tvBmiResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BMI: "
+            android:textSize="18sp"
+            android:textColor="#1976D2"
+            android:layout_marginBottom="12dp"
+            android:visibility="gone" />
+
+        <!-- BMI Status Slogan -->
+        <TextView
+            android:id="@+id/tvBmiStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Maintain a healthy BMI for a healthier life!"
+            android:textSize="16sp"
+            android:textColor="#1976D2"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone" />
+
+        <!-- Submit Button -->
         <Button
             android:id="@+id/btnSubmitUserData"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:backgroundTint="#2196F3"
             android:text="Submit"
-            android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cbCholesterol" />
+            android:backgroundTint="#1976D2"
+            android:textColor="@android:color/white"
+            android:padding="14dp"
+            android:layout_marginTop="12dp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </ScrollView>

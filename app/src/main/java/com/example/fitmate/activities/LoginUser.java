@@ -1,12 +1,13 @@
 package com.example.fitmate.activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,8 +18,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class LoginUser extends AppCompatActivity {
 
     private EditText edtEmail, edtPassword;
-    private Button btnLogin, btnRegister;
-    private ProgressBar progressBar;
+    private Button btnLogin;
+    private TextView btnRegister;
+    private ProgressDialog progressDialog;
 
     private FirebaseFirestore db;
 
@@ -27,18 +29,23 @@ public class LoginUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_user);
 
+        // Initialize Views
         edtEmail = findViewById(R.id.edtEmail);
         edtPassword = findViewById(R.id.edtPassword);
         btnLogin = findViewById(R.id.btnLogin);
         btnRegister = findViewById(R.id.btnRegister);
 
-        progressBar = new ProgressBar(this);
-        progressBar.setVisibility(ProgressBar.GONE);
+        // Setup progress dialog
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Logging in...");
+        progressDialog.setCancelable(false);
 
         db = FirebaseFirestore.getInstance();
 
+        // Login Click
         btnLogin.setOnClickListener(v -> loginUser());
 
+        // Navigate to Register
         btnRegister.setOnClickListener(v -> {
             Intent intent = new Intent(LoginUser.this, RegisterActivity.class);
             startActivity(intent);
@@ -49,18 +56,20 @@ public class LoginUser extends AppCompatActivity {
         String email = edtEmail.getText().toString().trim();
         String password = edtPassword.getText().toString().trim();
 
-        if (TextUtils.isEmpty(email) || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            Toast.makeText(this, "Enter valid email", Toast.LENGTH_SHORT).show();
+        if (!isValidEmail(email)) {
+            edtEmail.setError("Enter valid email");
+            edtEmail.requestFocus();
             return;
         }
 
         if (TextUtils.isEmpty(password)) {
-            Toast.makeText(this, "Enter password", Toast.LENGTH_SHORT).show();
+            edtPassword.setError("Password required");
+            edtPassword.requestFocus();
             return;
         }
 
         btnLogin.setEnabled(false);
-        Toast.makeText(this, "Checking credentials...", Toast.LENGTH_SHORT).show();
+        progressDialog.show();
 
         db.collection("users")
                 .whereEqualTo("email", email)
@@ -68,20 +77,28 @@ public class LoginUser extends AppCompatActivity {
                 .get()
                 .addOnSuccessListener(querySnapshot -> {
                     btnLogin.setEnabled(true);
+                    progressDialog.dismiss();
 
                     if (!querySnapshot.isEmpty()) {
                         Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
+
+                        // Pass email to RegisterUserActivity for autofill
                         Intent intent = new Intent(LoginUser.this, RegisterUserActivity.class);
+                        intent.putExtra("USER_EMAIL", email);
                         startActivity(intent);
                         finish();
                     } else {
-                        Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Invalid credentials", Toast.LENGTH_SHORT).show();
                     }
                 })
-
                 .addOnFailureListener(e -> {
                     btnLogin.setEnabled(true);
+                    progressDialog.dismiss();
                     Toast.makeText(this, "Login failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 });
+    }
+
+    private boolean isValidEmail(String email) {
+        return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 }
